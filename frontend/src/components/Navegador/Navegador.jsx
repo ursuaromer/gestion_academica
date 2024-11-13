@@ -15,9 +15,7 @@ const Navegador = () => {
     const handleProtectedRoute = (route) => {
         if (isLoggedIn) {
             navigate(route);
-        } else {
-            alert("Debes iniciar sesión para poder acceder.");
-        }
+        } 
     };
 
     return (

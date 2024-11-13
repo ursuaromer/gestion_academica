@@ -28,7 +28,7 @@ const HomeComponent = () => {
             <video autoPlay loop muted className="background-video">
                 <source src={miVideo} type="video/mp4" />
             </video>
-            <Navegador /> {/* El estado de login ya se maneja globalmente */}
+            <Navegador /> 
             <div className="container">
                 <h1 className="letra">Welcome</h1>
                 {!isLoggedIn && (

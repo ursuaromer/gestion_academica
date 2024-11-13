@@ -17,7 +17,7 @@ const OpcionesComponent = () => {
             <button className="option-button" onClick={() => handleOptionClick("Registrar Cursos")}>
                 Registrar Cursos
             </button>
-            <button className="option-button" onClick={() => handleOptionClick("Registrar Alumno")}>
+            <button className="option-button" onClick={() => handleOptionClick("Reporte de Alumnos matriculados")}>
                 Registrar Alumno
             </button>
         </div>
