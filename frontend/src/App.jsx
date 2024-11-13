@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeComponent from './components/homeComponent/HomeComponent';
 import OpcionesComponent from './components/opciones/Opciones';
 import { AuthProvider } from './components/AuthContext/AuthContext'; 
+import CourseForm from './components/opciones/Course';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomeComponent />} />
-          <Route path="/registre" element={<OpcionesComponent />} />
+          <Route path="/register" element={<OpcionesComponent />} />
+          <Route path="/course-register"element={<CourseForm/>}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

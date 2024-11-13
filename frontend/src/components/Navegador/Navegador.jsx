@@ -29,7 +29,7 @@ const Navegador = () => {
                 </Link>
                 <button
                     className='link-nav'
-                    onClick={() => handleProtectedRoute('/registre')}
+                    onClick={() => handleProtectedRoute('/register')}
                     disabled={!isLoggedIn} 
                 >
                     <LuPencilLine className='ico' />Registrar Datos

@@ -17,7 +17,7 @@ const HomeComponent = () => {
         if (username === "Admin" && password === "Admin") {
             login(); // Actualiza el estado de autenticación
             setError('');
-            navigate('/registre'); // Redirige después de iniciar sesión correctamente
+            navigate('/register'); // Redirige después de iniciar sesión correctamente
         } else {
             setError("Usuario o contraseña incorrectos");
         }
