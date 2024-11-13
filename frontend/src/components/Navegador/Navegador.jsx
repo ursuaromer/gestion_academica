@@ -4,9 +4,22 @@ import logo from '../IMG/logo.png';
 import { IoHome } from "react-icons/io5";
 import { GrContactInfo } from "react-icons/gr";
 import { LuPencilLine } from "react-icons/lu";
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext/AuthContext'; 
 
 const Navegador = () => {
+    const { isLoggedIn } = useAuth(); // Obtén el estado de autenticación
+
+    const navigate = useNavigate();
+
+    const handleProtectedRoute = (route) => {
+        if (isLoggedIn) {
+            navigate(route);
+        } else {
+            alert("Debes iniciar sesión para poder acceder.");
+        }
+    };
+
     return (
         <div className='navegador'>
             <div className='logoimg'>
@@ -16,15 +29,24 @@ const Navegador = () => {
                 <Link to='/' className='link-nav'>
                     <IoHome className='ico' />Inicio
                 </Link>
-                <Link to='/courseform' className='link-nav'>
-                    <LuPencilLine className='ico' />Course Form
-                </Link>
-                <Link to='/coursetlist' className='link-nav'>
+                <button
+                    className='link-nav'
+                    onClick={() => handleProtectedRoute('/registre')}
+                    disabled={!isLoggedIn} 
+                >
+                    <LuPencilLine className='ico' />Registrar Datos
+                </button>
+                <button
+                    className='link-nav'
+                    onClick={() => handleProtectedRoute('/coursetlist')}
+                    disabled={!isLoggedIn} // Deshabilita el botón si no está autenticado
+                >
                     <GrContactInfo className='ico' />Course List
-                </Link>
+                </button>
             </nav>
         </div>
     );
 }
 
 export default Navegador;
+

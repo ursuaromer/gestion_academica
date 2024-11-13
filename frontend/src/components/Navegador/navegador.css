@@ -36,3 +36,7 @@
 .navegador .menu .link-nav:hover{
     background-color: #2f2f2f;
 }
+.navegador .menu .link-nav:disabled {
+    background-color: #888; /* Color gris para los botones deshabilitados */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede hacer clic */
+}

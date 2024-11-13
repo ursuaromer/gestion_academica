@@ -1,40 +1,101 @@
+/* Estilo para el contenedor principal */
 .home {
-    position: relative; /* Cambiado a relative para que el video pueda posicionarse correctamente */
-    width: 100vw; /* Cubre todo el ancho de la pantalla */
-    height: 100vh; /* Cubre toda la altura de la pantalla */
+    position: relative; 
+    width: 100vw; 
+    height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Evita que el contenido se desborde */
+    overflow: hidden; 
 }
 
+/*#------------------------- Estilo para el video de fondo ----------------------#*/
 .background-video {
-    position: absolute; /* Posiciona el video en el fondo */
+    position: absolute; 
     top: 50%;
     left: 50%;
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -1; /* Asegúrate de que el video esté detrás del contenido */
-    transform: translate(-50%, -50%); /* Centra el video en la pantalla */
+    z-index: -1; 
+    transform: translate(-50%, -50%); 
 }
 
+/*#------------------------- Estilo para el texto de bienvenida ----------#*/
 .letra {
-    color: #f7f8f6ed; 
-    font-size: 2em; 
-    text-align: center; 
-    margin-top: 20px; 
+    color: #f7f8f6ed;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
 }
 
+/*#----------------- Estilo para el contenedor del contenido ------------------------#*/
 .container {
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semitransparente */
+    background-color: rgba(0, 0, 0, 0.8); /*#-------- Fondo negro semitransparente -----#*/
     padding: 20px;
     border-radius: 10px;
     width: 90%;
     max-width: 400px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative; /* Asegura que el contenido esté en el contexto correcto */
-    z-index: 1; /* Mantiene el contenido por encima del video */
+    position: relative;
+    z-index: 1; 
+}
+
+/*#------------------------- Estilo para el formulario de inicio de sesión ----------------------#*/
+.login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*#---------------------- Grupo de entrada (usuario y contraseña) ---------------------#*/
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+}
+
+/*#------------------- Etiqueta del campo de entrada -------------------#*/
+.input-group label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #fff;
+}
+
+/*#------------------ Estilo de los campos de entrada -----------------------#*/
+.input-group input {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/*#----------------------- Estilo del botón de inicio de sesión -----------------------#*/
+.login-button {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/*#--------------------- Efecto hover para el botón -----------------#*/
+.login-button:hover {
+    background-color: #0056b3;
+}
+.error-message {
+    color: #ff4d4d;
+    margin-top: 10px;
+    font-size: 14px;
 }
