@@ -5,6 +5,7 @@ import HomeComponent from './components/homeComponent/HomeComponent';
 import OpcionesComponent from './components/opciones/Opciones';
 import { AuthProvider } from './components/AuthContext/AuthContext'; 
 import CourseForm from './components/opciones/Course';
+import UserForm from './components/userRegister/UserRegister';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<HomeComponent />} />
           <Route path="/register" element={<OpcionesComponent />} />
           <Route path="/course-register"element={<CourseForm/>}/>
+          <Route path="/registrarse" element={<UserForm/>}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

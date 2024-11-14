@@ -5,7 +5,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // Funciones para iniciar y cerrar sesión
+    
     const login = () => setIsLoggedIn(true);
     const logout = () => setIsLoggedIn(false);
 

@@ -100,3 +100,20 @@
     margin-top: 10px;
     font-size: 14px;
 }
+.register-button {
+    padding: 10px 20px;
+    width: 200px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px; /* Agrega margen superior para separarlo del botón de login */
+}
+
+/*#--------------------- Efecto hover para el botón de registro -----------------#*/
+.register-button:hover {
+    background-color: #0056b3;
+}

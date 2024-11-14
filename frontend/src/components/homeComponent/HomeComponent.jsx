@@ -3,10 +3,10 @@ import Navegador from "../Navegador/Navegador";
 import './Home.css';
 import miVideo from '../IMG/fondo6.mp4';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from "../AuthContext/AuthContext"; 
+import { useAuth } from "../AuthContext/AuthContext";
 
 const HomeComponent = () => {
-    const { isLoggedIn, login } = useAuth(); // Obtén el estado de autenticación y la función login
+    const { isLoggedIn, login } = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -15,12 +15,16 @@ const HomeComponent = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (username === "Admin" && password === "Admin") {
-            login(); // Actualiza el estado de autenticación
+            login();
             setError('');
-            navigate('/register'); // Redirige después de iniciar sesión correctamente
+            navigate('/register'); 
         } else {
             setError("Usuario o contraseña incorrectos");
         }
+    };
+
+    const handleRegisterClick = () => {
+        navigate('/registrarse');
     };
 
     return (
@@ -28,7 +32,7 @@ const HomeComponent = () => {
             <video autoPlay loop muted className="background-video">
                 <source src={miVideo} type="video/mp4" />
             </video>
-            <Navegador /> 
+            <Navegador />
             <div className="container">
                 <h1 className="letra">Welcome</h1>
                 {!isLoggedIn && (
@@ -57,12 +61,18 @@ const HomeComponent = () => {
                         {error && <p className="error-message">{error}</p>}
                     </form>
                 )}
+                {!isLoggedIn && (
+                    <button className="register-button" onClick={handleRegisterClick}>
+                        Regístrate
+                    </button>
+                )}
             </div>
         </div>
     );
-}
+};
 
 export default HomeComponent;
+
 
 
 

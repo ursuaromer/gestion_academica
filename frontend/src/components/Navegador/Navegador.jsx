@@ -37,7 +37,7 @@ const Navegador = () => {
                 <button
                     className='link-nav'
                     onClick={() => handleProtectedRoute('/coursetlist')}
-                    disabled={!isLoggedIn} // Deshabilita el botón si no está autenticado
+                    disabled={!isLoggedIn} 
                 >
                     <GrContactInfo className='ico' />Course List
                 </button>
