@@ -1,0 +1,53 @@
+/*#-------------------------------------- Ajuste del formulario----------------------------## */
+.form-register {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; 
+    background-image: url('../IMG/finico.png');
+    background-size: cover; 
+    background-position: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+/*#------------------------ Contenedor central para los elementos del formulario -------------------------------------------------#*/
+.form-container {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-register button {
+    margin: 0 auto;
+    display: block;
+}
+
+.form-register button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: sans-serif;
+    background-color: #4c4747;
+    color: #fff;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.form-register button:hover {
+    border-color: aqua;
+}
+
+.form-register button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
