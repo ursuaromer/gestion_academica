@@ -1,62 +1,72 @@
-const User = require('../models/User')
-const bcrypt = require ('bcrypt')
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
-const createUserController =  async ({ username, password, role}) => {
-    const hashedPassword = await bcrypt.hash(password, 10)
+// Crear un nuevo usuario
+const createUserController = async ({ dni, username, password, role }) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
     try {
-        const newUser = await User.create({ username, password:hashedPassword, role})
-        return newUser
+        const newUser = await User.create({ dni, username, password: hashedPassword, role });
+        return newUser;
     } catch (error) {
-        throw new Error(error.message)
+        throw new Error(error.message);
     }
-}
+};
 
-//get all students
+// Obtener un usuario por DNI (en lugar de nombre de usuario)
+const getUserByDniController = async (dni) => {
+    try {
+        const user = await User.findOne({
+            where: { dni },  // Buscar por DNI
+        });
+        return user;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
+
+// Obtener todos los usuarios (sin cambios)
 const getAllUserController = async () => {
     try {
-        const users =  await User.findAll()
-        return users
-
+        const users = await User.findAll();
+        return users;
     } catch (error) {
-        throw new Error(error.message)
+        throw new Error(error.message);
     }
+};
 
-}
-
-const updateUserByIdController  = async (id, userData) => {
+// Actualizar un usuario por ID (sin cambios)
+const updateUserByIdController = async (id, userData) => {
     try {
-        const user = await User.findByPk(id)
-        if(!user) {
-            return null
+        const user = await User.findByPk(id);
+        if (!user) {
+            return null;
         }
-        await user.update(userData)
-        return user
+        await user.update(userData);
+        return user;
     } catch (error) {
-        throw  new Error(error.message)
-
+        throw new Error(error.message);
     }
+};
 
-}
-
-const deleteUserByIdController = async(id)=>{
+// Eliminar un usuario por ID (sin cambios)
+const deleteUserByIdController = async (id) => {
     try {
-        const user = await User.findByPk(id)
-        if(!user) {
-            return null
+        const user = await User.findByPk(id);
+        if (!user) {
+            return null;
         }
-        await  user.destroy()
-        return user
-
+        await user.destroy();
+        return user;
     } catch (error) {
-        throw new Error(error.message)
+        throw new Error(error.message);
     }
-}
-
-
+};
 
 module.exports = {
     createUserController,
     getAllUserController,
     updateUserByIdController,
-    deleteUserByIdController
-}
+    deleteUserByIdController,
+    getUserByDniController  // Cambié esto aquí
+};
+    

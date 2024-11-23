@@ -17,7 +17,7 @@ const Navegador = () => {
             navigate(route);
         } 
     };
-
+ 
     return (
         <div className='navegador'>
             <div className='logoimg'>

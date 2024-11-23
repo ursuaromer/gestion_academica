@@ -8,12 +8,12 @@
     position: fixed;
     left: 0;
     top: 0;
-    height: 70px;
+    height: 80px;
     width: 100%;
     padding: 0 20px;
 }
 .navegador .logoimg{
-    width: 50px;
+    width: 70px;
     display: flex;
     align-items: center;
 }
