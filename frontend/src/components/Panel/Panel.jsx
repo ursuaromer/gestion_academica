@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Panel.module.css";
-import Matricular from "./matricular/matricular";
+import MatriculaForm from "./matricular/matricular";
 import Docentes from "./docentes/docentes";
 import Cursos from "./cursos/cursos";
 import PlanEstudios from "./p_Estudios/ProEstudios";
@@ -10,7 +10,7 @@ const Panel = () => {
   const renderSection = () => {
     switch (activeSection) {
       case "matricular":
-        return <Matricular />;
+        return <MatriculaForm />;
       case "docentes":
         return <Docentes />;
       case "cursos":

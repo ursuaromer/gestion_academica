@@ -1,24 +1,193 @@
-// sections/Matricular.jsx
-import React from 'react';
-import styles from './Sections.module.css';
+import { useState } from "react";
+import axios from 'axios';
+import useMatriculaStore from "../../../Store/matriculaStore";
+import styles from './Matricula.module.css'; // Ajusta la ruta si es necesario
 
-const Matricular = () => {
-  return (
-    <div className={styles.section}>
-      <h2>Matricular Estudiantes</h2>
-      <form className={styles.form}>
-        <div className={styles.formGroup}>
-          <label>Nombre:</label>
-          <input type="text" />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Apellido:</label>
-          <input type="text" />
-        </div>
-        {/* Agrega más campos según necesites */}
-      </form>
-    </div>
-  );
-};
 
-export default Matricular;
+const MatriculaForm = ()=>{
+    const {addMatricula} = useMatriculaStore()
+    const [matriculaData, setMatriculaeData] = useState({
+        firstName:"", 
+        lastName1:"", 
+        lastName2:"", 
+        nacimiento:"", 
+        dni:"", 
+        direccion:"", 
+        telefono:"", 
+        email:"", 
+        programaEstudio:""
+    })
+
+    console.log(matriculaData);
+
+    const handleInputChange = (e)=>{
+        const  {name, value} = e.target;
+        setMatriculaeData({
+            ...matriculaData,
+            [name]:value
+        })
+
+    }
+
+    const  handleSubmit = async(e)=>{
+        e.preventDefault();
+        addMatricula(matriculaData)
+        setMatriculaeData({
+            firstName:"", 
+            lastName1:"", 
+            lastName2:"", 
+            nacimiento:"", 
+            dni:"", 
+            direccion:"", 
+            telefono:"", 
+            email:"", 
+            programaEstudio:""
+        })
+        alert("Matricula Added Successfully")
+
+        
+    }
+
+    
+
+    return(
+        <div>
+            <h1>Formulario de Matricula</h1>
+            
+              <form onSubmit={handleSubmit}>
+                  <div className={styles.formGroup}>
+                      <label htmlFor="firstName">Nombres:</label>
+                      <input
+                          id="firstName"
+                          type="text"
+                          placeholder="Ingrese Nombres"
+                          required
+                          name="firstName"
+                          value={matriculaData.firstName}
+                          onChange={handleInputChange}
+                      />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                      <label htmlFor="lastName1">Apellido Paterno:</label>
+                      <input
+                          id="lastName1"
+                          type="text"
+                          placeholder="Ingrese Apellido Paterno"
+                          required
+                          name="lastName1"
+                          value={matriculaData.lastName1}
+                          onChange={handleInputChange}
+                      />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                      <label htmlFor="lastName2">Apellido Materno:</label>
+                      <input
+                          id="lastName2"
+                          type="text"
+                          placeholder="Ingrese Apellido Materno"
+                          required
+                          name="lastName2"
+                          value={matriculaData.lastName2}
+                          onChange={handleInputChange}
+                      />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="nacimiento">Fecha de Nacimiento:</label>
+                    <input
+                        id="nacimiento"
+                        type="date" 
+                        required
+                        name="nacimiento"
+                        value={matriculaData.nacimiento}
+                        onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                      <label htmlFor="dni">DNI:</label>
+                      <input
+                          id="dni"
+                          type="text"
+                          placeholder="Ingrese DNI"
+                          required
+                          name="dni"
+                          value={matriculaData.dni}
+                          onChange={handleInputChange}
+                      />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                      <label htmlFor="direccion">Dirección:</label>
+                      <input
+                          id="direccion"
+                          type="text"
+                          placeholder="Ingrese Direccion"
+                          required
+                          name="direccion"
+                          value={matriculaData.direccion}
+                          onChange={handleInputChange}
+                      />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                      <label htmlFor="telefono">Teléfono:</label>
+                      <input
+                          id="telefono"
+                          type="text"
+                          placeholder="Ingrese Teléfono"
+                          required
+                          name="telefono"
+                          value={matriculaData.telefono}
+                          onChange={handleInputChange}
+                      />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        id="email"
+                        type="email" 
+                        placeholder="Ingrese Gmail"
+                        required
+                        name="email"
+                        value={matriculaData.email}
+                        onChange={handleInputChange}
+                    />
+                  </div>
+
+
+                  <div className={styles.formGroup}>
+                      <label htmlFor="programaEstudio">Programa de Estudio:</label>
+                      <select
+                          id="programaEstudio"
+                          name="programaEstudio"
+                          value={matriculaData.programaEstudio}
+                          onChange={handleInputChange}
+                          required
+                      >
+                          <option value="">Seleccione un Programa de Estudio</option>
+                          <option value="administracionEmpresas">ADMINISTRACIÓN DE EMPRESAS</option>
+                          <option value="operacionesTuristicas">ADMINISTRACIÓN DE OPERACIONES TURÍSTICAS</option>
+                          <option value="asistenciaAdministrativa">ASISTENCIA ADMINISTRATIVA</option>
+                          <option value="contabilidad">CONTABILIDAD</option>
+                          <option value="construccionCivil">CONSTRUCCIÓN CIVIL</option>
+                          <option value="desarrolloSistemas">DESARROLLO DE SISTEMAS DE INFORMACIÓN</option>
+                          <option value="electricidadIndustrial">ELECTRICIDAD INDUSTRIAL</option>
+                          <option value="enfermeriaTecnica">ENFERMERÍA TÉCNICA</option>
+                          <option value="manejoForestal">MANEJO FORESTAL</option>
+                          <option value="mecatronicaAutomotriz">MECATRÓNICA AUTOMOTRIZ</option>
+                          <option value="produccionAgropecuaria">PRODUCCIÓN AGROPECUARIA</option>
+                      </select>
+                  </div>
+
+                  <button type="submit" className={styles.submitButton}>REGISTRAR</button>
+              </form>
+        </div>
+
+    )
+}
+
+export default  MatriculaForm;
