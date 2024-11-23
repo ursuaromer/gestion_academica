@@ -1,0 +1,119 @@
+/* Estilo para el contenedor principal */
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/*#------------------------- Estilo para el video de fondo ----------------------#*/
+.background-video {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; 
+    transform: translate(-50%, -50%); 
+}
+
+/*#------------------------- Estilo para el texto de bienvenida ----------#*/
+.letra {
+    color: #f7f8f6ed;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*#----------------- Estilo para el contenedor del contenido ------------------------#*/
+.container {
+    background-color: rgba(0, 0, 0, 0.8); /*#-------- Fondo negro semitransparente -----#*/
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1; 
+}
+
+/*#------------------------- Estilo para el formulario de inicio de sesión ----------------------#*/
+.login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*#---------------------- Grupo de entrada (usuario y contraseña) ---------------------#*/
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+}
+
+/*#------------------- Etiqueta del campo de entrada -------------------#*/
+.input-group label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #fff;
+}
+
+/*#------------------ Estilo de los campos de entrada -----------------------#*/
+.input-group input {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/*#----------------------- Estilo del botón de inicio de sesión -----------------------#*/
+.login-button {
+    padding: 10px 20px;
+    width: 200px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/*#--------------------- Efecto hover para el botón -----------------#*/
+.login-button:hover {
+    background-color: #0056b3;
+}
+.error-message {
+    color: #ff4d4d;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.register-button {
+    padding: 10px 20px;
+    width: 200px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px; /* Agrega margen superior para separarlo del botón de login */
+}
+
+/*#--------------------- Efecto hover para el botón de registro -----------------#*/
+.register-button:hover {
+    background-color: #0056b3;
+}
