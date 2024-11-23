@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../AuthContext/AuthContext";
 
 const HomeComponent = () => {
-    const { isLoggedIn, login } = useAuth();
+    const { isLoggedIn, login } = useAuth();  // Extracting login state and login function from the AuthContext
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -14,17 +14,18 @@ const HomeComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // If the username and password are correct, log in and navigate to the register page
         if (username === "Admin" && password === "Admin") {
-            login();
-            setError('');
-            navigate('/register'); 
+            login();  // Call the login function from the context
+            setError('');  // Reset the error state
+            navigate('/register');  // Redirect to the register page after successful login
         } else {
-            setError("Usuario o contraseña incorrectos");
+            setError("Usuario o contraseña incorrectos");  // Show an error message if login fails
         }
     };
 
     const handleRegisterClick = () => {
-        navigate('/registrarse');
+        navigate('/registrarse');  // Navigate to the registration page
     };
 
     return (
@@ -33,39 +34,36 @@ const HomeComponent = () => {
                 <source src={miVideo} type="video/mp4" />
             </video>
             <Navegador />
-            <div className="container">
-                <h1 className="letra">Welcome</h1>
-                {!isLoggedIn && (
-                    <form className="login-form" onSubmit={handleSubmit}>
-                        <div className="input-group">
-                            <label htmlFor="username">Usuario:</label>
-                            <input
-                                type="text"
-                                id="username"
-                                placeholder="Ingresa tu usuario"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="password">Contraseña:</label>
-                            <input
-                                type="password"
-                                id="password"
-                                placeholder="Ingresa tu contraseña"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <button type="submit" className="login-button">Ingresar</button>
+            <div className="form-container">
+                <p className="title">Welcome </p>
+                {!isLoggedIn ? (
+                    
+                    <form className="form" onSubmit={handleSubmit}>
+                        <input
+                            type="text" 
+                            className="input"
+                            placeholder="Username" 
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <input
+                            type="password"
+                            className="input"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                         {error && <p className="error-message">{error}</p>}
+                        <button className="form-btn" type="submit">Ingresar</button>
                     </form>
+                ) : (
+                    <div className="welcome-message">
+                        <p>You are logged in! Go to the <span onClick={() => navigate('/dashboard')}>Dashboard</span>.</p>
+                    </div>
                 )}
-                {!isLoggedIn && (
-                    <button className="register-button" onClick={handleRegisterClick}>
-                        Regístrate
-                    </button>
-                )}
+                <p className="sign-up-label">
+                    ¿No estas registrado? <span className="sign-up-link" onClick={handleRegisterClick}>Registrate</span>
+                </p>
             </div>
         </div>
     );
