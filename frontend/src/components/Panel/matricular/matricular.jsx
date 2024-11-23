@@ -169,17 +169,17 @@ const MatriculaForm = ()=>{
                           required
                       >
                           <option value="">Seleccione un Programa de Estudio</option>
-                          <option value="administracionEmpresas">ADMINISTRACIÓN DE EMPRESAS</option>
-                          <option value="operacionesTuristicas">ADMINISTRACIÓN DE OPERACIONES TURÍSTICAS</option>
-                          <option value="asistenciaAdministrativa">ASISTENCIA ADMINISTRATIVA</option>
-                          <option value="contabilidad">CONTABILIDAD</option>
-                          <option value="construccionCivil">CONSTRUCCIÓN CIVIL</option>
-                          <option value="desarrolloSistemas">DESARROLLO DE SISTEMAS DE INFORMACIÓN</option>
-                          <option value="electricidadIndustrial">ELECTRICIDAD INDUSTRIAL</option>
-                          <option value="enfermeriaTecnica">ENFERMERÍA TÉCNICA</option>
-                          <option value="manejoForestal">MANEJO FORESTAL</option>
-                          <option value="mecatronicaAutomotriz">MECATRÓNICA AUTOMOTRIZ</option>
-                          <option value="produccionAgropecuaria">PRODUCCIÓN AGROPECUARIA</option>
+                          <option value="ADMINISTRACIÓN DE EMPRESAS">ADMINISTRACIÓN DE EMPRESAS</option>
+                          <option value="ADMINISTRACIÓN DE OPERACIONES TURÍSTICAS">ADMINISTRACIÓN DE OPERACIONES TURÍSTICAS</option>
+                          <option value="ASISTENCIA ADMINISTRATIVA">ASISTENCIA ADMINISTRATIVA</option>
+                          <option value="CONTABILIDAD">CONTABILIDAD</option>
+                          <option value="CONSTRUCCIÓN CIVIL">CONSTRUCCIÓN CIVIL</option>
+                          <option value="DESARROLLO DE SISTEMAS DE INFORMACIÓN">DESARROLLO DE SISTEMAS DE INFORMACIÓN</option>
+                          <option value="ELECTRICIDAD INDUSTRIAL">ELECTRICIDAD INDUSTRIAL</option>
+                          <option value="ENFERMERÍA TÉCNICA">ENFERMERÍA TÉCNICA</option>
+                          <option value="MANEJO FORESTAL">MANEJO FORESTAL</option>
+                          <option value="MECATRÓNICA AUTOMOTRIZ">MECATRÓNICA AUTOMOTRIZ</option>
+                          <option value="PRODUCCIÓN AGROPECUARIA">PRODUCCIÓN AGROPECUARIA</option>
                       </select>
                   </div>
 

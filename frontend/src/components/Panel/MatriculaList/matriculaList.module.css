@@ -1,0 +1,107 @@
+/* matriculaList.module.css */
+
+/* Contenedor general */
+.container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 90%;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Título */
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo de la tabla */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fdfdfd; /* Fondo base de la tabla */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Encabezados de tabla */
+  .table th {
+    padding: 12px;
+    background-color: #4caf50; /* Color del encabezado */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-bottom: 2px solid #45a049;
+    text-align: center;
+  }
+  
+  /* Celdas de tabla */
+  .table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Filas alternadas */
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fondo para filas pares */
+  }
+  
+  .table tr:nth-child(odd) {
+    background-color: #eafaf1; /* Fondo para filas impares */
+  }
+  
+  /* Cambio de color al pasar el mouse */
+  .table tr:hover {
+    background-color: #c8e6c9; /* Color al pasar el mouse */
+    cursor: pointer;
+  }
+  
+  /* Estilo de los botones */
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Botón de eliminar */
+  .deleteButton {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .deleteButton:hover {
+    background-color: #ff1a1a;
+  }
+  
+  /* Botón de editar */
+  .editButton {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .editButton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Efectos en dispositivos móviles */
+  @media (max-width: 768px) {
+    .table {
+      font-size: 12px;
+    }
+  
+    button {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+  }
+  
