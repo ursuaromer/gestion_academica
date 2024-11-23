@@ -47,3 +47,4 @@ const Navegador = () => {
 }
 
 export default Navegador;
+
