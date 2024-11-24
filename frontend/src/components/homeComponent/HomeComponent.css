@@ -1,0 +1,312 @@
+/* Contenedor que cubre toda la pantalla */
+.pantallaCompleta-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #0268d6, #8dc3c71f); /* Fondo con gradiente */
+  color: white;
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Poppins', Arial, sans-serif; /* Fuente más moderna */
+  box-sizing: border-box;
+}
+
+/* Botón en la parte superior derecha */
+.pantallaCompleta-container .login-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #e43a50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.pantallaCompleta-container .login-button:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño de la sección */
+  background-color: #0056b3;
+}
+
+/* Logotipos */
+.pantallaCompleta-container .logoSuizaIz,
+.pantallaCompleta-container .logoSuizaDer {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: calc(50% - 80px); /* Centra verticalmente */
+  transform: translateY(-50%);
+}
+
+.pantallaCompleta-container .logoSuizaIz {
+  left: 5%; /* Alineación hacia la izquierda */
+}
+
+.pantallaCompleta-container .logoSuizaDer {
+  right: 5%; /* Alineación hacia la derecha */
+}
+
+/* Encabezado principal */
+.pantallaCompleta-container .header {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.pantallaCompleta-container .title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Mayúsculas para mayor impacto */
+  color: white;
+}
+
+.pantallaCompleta-container .subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Secciones de contenido */
+.pantallaCompleta-container .content {
+  width: 100%;
+  max-width: 900px; /* Aumentar el máximo para una mejor disposición */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.pantallaCompleta-container .info-section,
+.features-section {
+  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.6s ease; /* Efecto suave en todos los cambios */
+}
+
+/* Efecto hover */
+.pantallaCompleta-container .info-section:hover,
+.pantallaCompleta-container .features-section:hover {
+  transform: scale(1.02); /* Aumenta ligeramente el tamaño de la sección */
+  background: rgba(255, 255, 255, 0.2); /* Cambia el fondo a un tono más opaco */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Aumenta el tamaño de la sombra */
+}
+
+.pantallaCompleta-container .info-section h2,
+.features-section h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.pantallaCompleta-container .info-section p,
+.features-section ul {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.pantallaCompleta-container .features-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pantallaCompleta-container .features-section li {
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.pantallaCompleta-container .features-section li:before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pantallaCompleta-container .logoSuizaIz,
+  .pantallaCompleta-container .logoSuizaDer {
+    width: 120px;
+    height: 120px;
+    top: 10%; /* Ajusta la posición en pantallas más pequeñas */
+    transform: translateY(0); /* Elimina el ajuste vertical */
+  }
+
+  .pantallaCompleta-container .logoSuizaIz {
+    left: 10%;
+  }
+
+  .pantallaCompleta-container .logoSuizaDer {
+    right: 10%;
+  }
+
+  .pantallaCompleta-container .title {
+    font-size: 36px;
+  }
+
+  .pantallaCompleta-container .subtitle {
+    font-size: 18px;
+  }
+
+  .pantallaCompleta-container .login-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .pantallaCompleta-container .info-section,
+  .features-section {
+    padding: 15px;
+  }
+}
+
+
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal */
+.modal {
+  display: flex;
+  background: #1b1b2f;
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 900px;
+  max-width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-30px); /* Empieza fuera de la vista */
+  opacity: 0; /* Comienza invisible */
+  animation: modalIn 0.5s ease-out forwards; /* Animación de entrada */
+}
+
+/* Animación de aparición */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translate(100%, -100%); /* Empieza desde la parte superior derecha (fuera de la pantalla) */
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0); /* Se mueve a su posición original */
+  }
+}
+
+.modal-left {
+  background: #4989BF;
+  padding: 30px;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-left h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+  cursor: default;
+}
+
+.modal-left p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* .rocket-icon {
+  font-size: 90px;
+} */
+
+.modal-left .logoSuiza{
+  width: 230px;
+  height: 230px;
+}
+
+.modal-right {
+  padding: 50px;
+  flex: 2;
+  margin-top: 30px; /* Ajusta según lo necesario */
+}
+
+.modal-right h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  cursor:  default;
+}
+
+.modal-right p{
+  font-size: 16px;
+  margin-top: -20px;
+  margin-bottom: 60px;
+  text-decoration: underline;
+  cursor: default;
+}
+
+.modal-right label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px; /* Baja el grupo completo (label + input) */
+}
+
+.modal-right input,
+.modal-right select {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px; /* Espacio entre cada grupo */
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 17px;
+}
+
+
+.submit-button {
+  width: 60%;
+  padding: 10px;
+  background-color: #4989BF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #e43a50;
+}
+
+.close-button {
+  margin-top: 10px;
+  background-color: transparent;
+  color: #4989BF;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  color: white;
+}

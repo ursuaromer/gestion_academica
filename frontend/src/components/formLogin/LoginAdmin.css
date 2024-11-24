@@ -1,3 +1,10 @@
+tml, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
 /* Estilo para el contenedor principal */
 .home {
     display: flex;
@@ -8,10 +15,11 @@
     color: #fff;
     padding: 20px;
     border-radius: 10px;
+    box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
 }
 
 /*#------------------------- Estilo para el video de fondo ----------------------#*/
-.background-video {
+.home .background-video {
     position: absolute; 
     top: 50%;
     left: 50%;
@@ -20,11 +28,17 @@
     width: auto;
     height: auto;
     z-index: -1; 
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
+    opacity: 0.7; /* Mantén el video ligeramente visible */
+    filter: blur(7px) brightness(0.9); /* Efecto suave */
+    transition: filter 5s ease-in-out; /* Suaviza los cambios */
 }
 
+
+
+
 /*#------------------------- Estilo para el texto de bienvenida ----------#*/
-.letra {
+.home .letra {
     color: #f7f8f6ed;
     font-size: 2em;
     text-align: center;
@@ -32,28 +46,36 @@
 }
 
 /*#----------------- Estilo para el contenedor del contenido ------------------------#*/
-.container {
+.home .container {
     background-color: rgba(0, 0, 0, 0.8); /*#-------- Fondo negro semitransparente -----#*/
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     max-width: 400px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* border: green solid 3px; */
     position: relative;
     z-index: 1; 
 }
 
 /*#------------------------- Estilo para el formulario de inicio de sesión ----------------------#*/
-.login-form {
-    margin-top: 20px;
+.home .login-form {
+    /* border: red solid 2px; */
+    width: 360px;
+    padding: 10px;
+    padding-right: 30px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 /*#---------------------- Grupo de entrada (usuario y contraseña) ---------------------#*/
-.input-group {
+.home .input-group {
+    /* border: yellow solid 3px; */
+    padding: 10px;
+    margin-left: 20px;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
@@ -61,16 +83,16 @@
 }
 
 /*#------------------- Etiqueta del campo de entrada -------------------#*/
-.input-group label {
+.home .input-group label {
     margin-bottom: 5px;
     font-size: 16px;
     color: #fff;
 }
 
 /*#------------------ Estilo de los campos de entrada -----------------------#*/
-.input-group input {
+.home .input-group input {
     padding: 10px;
-    width: 100%;
+    width: 95%;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
@@ -79,7 +101,7 @@
 }
 
 /*#----------------------- Estilo del botón de inicio de sesión -----------------------#*/
-.login-button {
+.home .login-button {
     padding: 10px 20px;
     width: 200px;
     background-color: #007BFF;
@@ -92,15 +114,17 @@
 }
 
 /*#--------------------- Efecto hover para el botón -----------------#*/
-.login-button:hover {
-    background-color: #0056b3;
+.home .login-button:hover {
+    background-color: #8faecf;
+    color: black;
 }
 .error-message {
     color: #ff4d4d;
     margin-top: 10px;
     font-size: 14px;
 }
-.register-button {
+
+.home .register-button {
     padding: 10px 20px;
     width: 200px;
     background-color: #007BFF;
@@ -114,6 +138,6 @@
 }
 
 /*#--------------------- Efecto hover para el botón de registro -----------------#*/
-.register-button:hover {
+.home .register-button:hover {
     background-color: #0056b3;
 }
