@@ -28,7 +28,11 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
+
+            isIn: [['admin', 'docente', 'estudiante']], // Rol permitido asasasasa
+
             isIn: [['admin', 'profesor', 'estudiante']], // Valida que el rol sea uno de los valores permitidos
+
         },
     },
 }, {

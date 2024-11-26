@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext/AuthContext'; 
 
 const Navegador = () => {
-    const { isLoggedIn } = useAuth(); // Obtén el estado de autenticación
+    const { isLoggedIn } = useAuth(); // Obtén el estado de autenticación....
 
     const navigate = useNavigate();
 
