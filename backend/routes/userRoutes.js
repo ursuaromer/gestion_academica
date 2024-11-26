@@ -12,14 +12,14 @@ const userRouter = Router();
 
 // Crear nuevo usuario
 userRouter.post("/", async (req, res) => {
-    const { dni, password, role } = req.body;
-    try {
-        if (!dni || !password || !role) {
-            return res.status(400).json({ error: "Faltan campos requeridos: dni, password o role" });
-        }
+    const { dni, username, password, role } = req.body;
+    if (!dni || !username || !password || !role) {
+        return res.status(400).json({ error: "Faltan campos requeridos: dni, username, password o role" });
+    }
 
-        const newUser = await createUserController({ dni, password, role });
-        res.status(201).json(newUser);
+    try {
+        const newUser = await createUserController({ dni, username, password, role });
+        res.status(201).json({ message: "Usuario creado con éxito", user: newUser });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

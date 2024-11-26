@@ -2,9 +2,9 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 // Crear un nuevo usuario
-const createUserController = async ({ dni, password, role }) => {
+const createUserController = async ({ dni, username, password, role }) => {
     try {
-        if (!dni || !password || !role) {
+        if (!dni || !username || !password || !role) {
             throw new Error('Faltan datos requeridos para crear el usuario.');
         }
 
@@ -20,6 +20,7 @@ const createUserController = async ({ dni, password, role }) => {
         // Crear el usuario
         const newUser = await User.create({
             dni,
+            username, // Asegúrate de incluir username aquí
             password: hashedPassword,
             role,
         });

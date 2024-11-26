@@ -58,7 +58,7 @@ const HomeComponent = () => {
       {/* Mostrar el usuario que ha iniciado sesión */}
       {user && (
         <div>
-          <p>Bienvenido, {user.username} ({user.dni})</p>  {/* Muestra el nombre y DNI del usuario */}
+          {/* <p>Bienvenido, {user.username} ({user.dni})</p>  Muestra el nombre y DNI del usuario */}
         </div>
       )}
 

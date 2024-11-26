@@ -4,9 +4,9 @@ import Matricular from "./matricular/matricular";
 import Docentes from "./docentes/docentes";
 import Cursos from "./cursos/cursos";
 import PlanEstudios from "./p_Estudios/ProEstudios";
-import useUserStore from "../../Store/userStore";
+import useUserStore from "../../../Store/userStore";
 
-const Panel = () => {
+const Panelg = () => {
   const [activeSection, setActiveSection] = useState("matricular");
 
   const renderSection = () => {
@@ -118,4 +118,4 @@ const Panel = () => {
   );
 };
 
-export default Panel;
+export default Panelg;

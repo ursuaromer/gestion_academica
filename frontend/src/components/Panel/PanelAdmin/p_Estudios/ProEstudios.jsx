@@ -1,6 +1,6 @@
 // sections/PlanEstudios.jsx
 import React from 'react';
-import styles from '../matricular/Sections.module.css';
+// import styles from '../../PanelAdmin/matricular/Sections.module.css';
 
 
 
