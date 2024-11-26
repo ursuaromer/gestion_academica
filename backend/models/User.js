@@ -1,44 +1,39 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
 
-const User = sequelize.define('usuarios', {
-    id: {
+const User = sequelize.define('User', {
+    id_usuario: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false,
     },
     dni: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING(8), // Supone un DNI con 8 caracteres
         allowNull: false,
         unique: true,
-    },
-    username: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        unique: true,
-    },
-    password: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-    },
-    role: {
-        type: DataTypes.STRING(20),
-        allowNull: false,
         validate: {
-            isIn: [['admin', 'docente', 'estudiante']], // Rol permitido
+            isNumeric: true, // Asegura que solo contenga números
+            len: [8, 8], // Requiere exactamente 8 caracteres
         },
     },
-    created_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [6, 100], // Longitud mínima de 6 caracteres
+        },
     },
-    updated_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            isIn: [['admin', 'profesor', 'estudiante']], // Valida que el rol sea uno de los valores permitidos
+        },
     },
 }, {
-    tableName: 'usuarios',
-    timestamps: false,
+    tableName: 'User', // Nombre de la tabla en singular
+    timestamps: true, // Incluye createdAt y updatedAt
 });
 
-module.exports = User; 
+module.exports = User;
