@@ -17,4 +17,4 @@ const Admins = () => {
   )
 }
 
-export default Admins
+export default Admins;
