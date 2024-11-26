@@ -25,7 +25,7 @@ const User = sequelize.define('usuarios', {
         type: DataTypes.STRING(20),
         allowNull: false,
         validate: {
-            isIn: [['admin', 'docente', 'estudiante']], // Rol permitido
+            isIn: [['admin', 'docente', 'estudiante']], // Rol permitido asasasasa
         },
     },
     created_at: {
