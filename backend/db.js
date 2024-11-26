@@ -12,4 +12,5 @@ sequelize.authenticate()
     .then(() => console.log('Conexión exitosa con la base de datos PostgreSQL'))
     .catch(err => console.error('Error al conectar con la base de datos:', err));
 
-module.exports=sequelize
+// Exportar la instancia de Sequelize
+module.exports = sequelize;
