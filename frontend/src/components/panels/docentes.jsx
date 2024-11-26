@@ -2,7 +2,7 @@ import React from 'react'
 import useUserStore from '../../Store/userStore'
 
 const Docentes = () => {
-  const user = useUserStore((state) => state.user)
+  const user = useUserStore((state) => state.user) //wgfergetrghtrhrthbdt
 
 
   return (
@@ -10,7 +10,7 @@ const Docentes = () => {
       {user &&(
         <div>
           <h1>Panel {user.role}</h1>
-          <h1>Bienvenido, usuario: {user.username} ({user.dni}), rol: {user.role}</h1>
+          <h1>Bienvenido, usuario: {user.username} ({user.dni}), rol: {user.role}</h1> 
         </div>
       )}
     </div>
