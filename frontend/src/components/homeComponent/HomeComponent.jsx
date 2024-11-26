@@ -44,7 +44,7 @@ const HomeComponent = () => {
         }
       }
     } catch (error) {
-      alert(error.message || "Error al iniciar sesión");
+      alert(error.message || "Error al iniciar sesión...");
     }
   };
 
