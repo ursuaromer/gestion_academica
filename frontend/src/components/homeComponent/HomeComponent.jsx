@@ -16,6 +16,7 @@ const HomeComponent = () => {
   const user = useUserStore((state) => state.user);  // Accede a la información del usuario
   const navigate = useNavigate();
 
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -33,7 +34,7 @@ const HomeComponent = () => {
 
         // Redirigir según el rol recibido
         if (user.role === "admin") {
-          navigate("/panel-admin");
+          navigate("/panel");
         } else if (user.role === "docente") {
           navigate("/panel-docente");
         } else if (user.role === "estudiante") {
