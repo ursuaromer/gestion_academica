@@ -1,0 +1,96 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(255, 255, 255, 0.5);  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté encima del contenido principal */
+  pointer-events: auto; /* Permite clics dentro del modal */
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  z-index: 1010; /* Más alto que modalOverlay */
+}
+
+button {
+  z-index: 1020; /* Asegura que sea clicable */
+}
+
+
+
+/* Título del modal */
+.modalContent h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Estilo para los campos del formulario */
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalContent form label {
+  font-weight: bold;
+}
+
+.modalContent form input,
+.modalContent form select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modalContent form input:focus,
+.modalContent form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Mensaje de error */
+.modalContent div {
+  color: red;
+  font-size: 0.9rem;
+}
+
+/* Botones del formulario */
+.modalContent button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modalContent button:hover {
+  background-color: #0056b3;
+}
+
+.modalContent button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Botón de cerrar */
+.modalContent button:last-child {
+  background-color: #f44336;
+  margin-top: 10px;
+}
+
+.modalContent button:last-child:hover {
+  background-color: #d32f2f;
+}

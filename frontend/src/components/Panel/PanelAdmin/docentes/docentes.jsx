@@ -1,65 +1,60 @@
-import React, { useState } from 'react';
-import styles from './docente.module.css';
-
-const Docentes = () => {
+import React, { useState } from "react";
+import styles from "./docente.module.css";
+import useDocenteStore from "../../../../Store/docenteStore";
+const Docentes = ({ agregarDocente, handleRegresar }) => {
   const [formData, setFormData] = useState({
-    codigo: '',
-    nombre: '',
-    apellido: '',
-    email: '',
-    especialidad: '',
-    fechaContratacion: ''
+    codigo: "",
+    nombre: "",
+    apellido: "",
+    email: "",
+    especialidad: "",
+    fechaContratacion: "",
   });
 
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-    
-    // Validate Código (assuming it should be alphanumeric and not empty)
+
     if (!formData.codigo.trim()) {
-      newErrors.codigo = 'Código es requerido';
+      newErrors.codigo = "Código es requerido";
     } else if (!/^[a-zA-Z0-9]+$/.test(formData.codigo)) {
-      newErrors.codigo = 'Código debe ser alfanumérico';
+      newErrors.codigo = "Código debe ser alfanumérico";
     }
 
-    // Validate Nombre y Apellido (no números, no caracteres especiales)
     if (!formData.nombre.trim()) {
-      newErrors.nombre = 'Nombre es requerido';
+      newErrors.nombre = "Nombre es requerido";
     } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.nombre)) {
-      newErrors.nombre = 'Nombre solo debe contener letras';
+      newErrors.nombre = "Nombre solo debe contener letras";
     }
 
     if (!formData.apellido.trim()) {
-      newErrors.apellido = 'Apellido es requerido';
+      newErrors.apellido = "Apellido es requerido";
     } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(formData.apellido)) {
-      newErrors.apellido = 'Apellido solo debe contener letras';
+      newErrors.apellido = "Apellido solo debe contener letras";
     }
 
-    // Validate Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
-      newErrors.email = 'Email es requerido';
+      newErrors.email = "Email es requerido";
     } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Email no es válido';
+      newErrors.email = "Email no es válido";
     }
 
-    // Validate Especialidad
     if (!formData.especialidad.trim()) {
-      newErrors.especialidad = 'Especialidad es requerida';
+      newErrors.especialidad = "Especialidad es requerida";
     }
 
-    // Validate Fecha Contratacion
     if (!formData.fechaContratacion) {
-      newErrors.fechaContratacion = 'Fecha de contratación es requerida';
+      newErrors.fechaContratacion = "Fecha de contratación es requerida";
     }
 
     setErrors(newErrors);
@@ -69,105 +64,99 @@ const Docentes = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Aquí iría la lógica para enviar los datos (por ejemplo, a una API)
-      console.log('Formulario válido', formData);
-      alert('Docente registrado exitosamente');
-      // Opcional: limpiar formulario después del envío
+      agregarDocente(formData);  // Pasa los datos del formulario al componente padre
+      alert("Docente registrado exitosamente");
       setFormData({
-        codigo: '',
-        nombre: '',
-        apellido: '',
-        email: '',
-        especialidad: '',
-        fechaContratacion: ''
+        codigo: "",
+        nombre: "",
+        apellido: "",
+        email: "",
+        especialidad: "",
+        fechaContratacion: "",
       });
-    } else {
-      console.log('Hay errores en el formulario');
     }
-  };
-
-  const handleListaDocentes = () => {
-    // Aquí iría la lógica para mostrar/navegar a la lista de docentes
-    console.log('Mostrar lista de docentes');
   };
 
   return (
     <div className={styles.section}>
-      <h2 className={styles.title}>REGISTRAR DOCENTES</h2>
-      <button 
-        className={styles.button} 
-        onClick={handleListaDocentes}
-      >
-        Lista de Docentes
-      </button>
+      <div className={styles.header}>
+        <button className={styles.regresarButton} onClick={handleRegresar}>
+        ← Volver
+        </button>
+        <h2 className={styles.title}>Registrar Docente</h2>
+      </div>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          <label className={styles.label}>CODIGO:</label>
-          <input 
-            className={styles.input} 
-            type="text" 
+          <label className={styles.label}>Código:</label>
+          <input
+            className={styles.input}
+            type="text"
             name="codigo"
             value={formData.codigo}
             onChange={handleChange}
           />
-          {errors.codigo && <p style={{color: 'red', fontSize: '0.8rem'}}>{errors.codigo}</p>}
+          {errors.codigo && <p className={styles.error}>{errors.codigo}</p>}
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Nombre:</label>
-          <input 
-            className={styles.input} 
-            type="text" 
+          <input
+            className={styles.input}
+            type="text"
             name="nombre"
             value={formData.nombre}
             onChange={handleChange}
           />
-          {errors.nombre && <p style={{color: 'red', fontSize: '0.8rem'}}>{errors.nombre}</p>}
+          {errors.nombre && <p className={styles.error}>{errors.nombre}</p>}
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label}>Apellido:</label>
-          <input 
-            className={styles.input} 
-            type="text" 
+          <input
+            className={styles.input}
+            type="text"
             name="apellido"
             value={formData.apellido}
             onChange={handleChange}
           />
-          {errors.apellido && <p style={{color: 'red', fontSize: '0.8rem'}}>{errors.apellido}</p>}
+          {errors.apellido && <p className={styles.error}>{errors.apellido}</p>}
         </div>
         <div className={styles.formGroup}>
-          <label className={styles.label}>EMAIL:</label>
-          <input 
-            className={styles.input} 
-            type="email" 
+          <label className={styles.label}>Email:</label>
+          <input
+            className={styles.input}
+            type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
           />
-          {errors.email && <p style={{color: 'red', fontSize: '0.8rem'}}>{errors.email}</p>}
+          {errors.email && <p className={styles.error}>{errors.email}</p>}
         </div>
         <div className={styles.formGroup}>
-          <label className={styles.label}>ESPECIALIDAD:</label>
-          <input 
-            className={styles.input} 
-            type="text" 
+          <label className={styles.label}>Especialidad:</label>
+          <input
+            className={styles.input}
+            type="text"
             name="especialidad"
             value={formData.especialidad}
             onChange={handleChange}
           />
-          {errors.especialidad && <p style={{color: 'red', fontSize: '0.8rem'}}>{errors.especialidad}</p>}
+          {errors.especialidad && (
+            <p className={styles.error}>{errors.especialidad}</p>
+          )}
         </div>
         <div className={styles.formGroup}>
-          <label className={styles.label}>FECHA CONTRATACION:</label>
-          <input 
-            className={styles.input} 
-            type="date" 
+          <label className={styles.label}>Fecha Contratación:</label>
+          <input
+            className={styles.input}
+            type="date"
             name="fechaContratacion"
             value={formData.fechaContratacion}
             onChange={handleChange}
           />
-          {errors.fechaContratacion && <p style={{color: 'red', fontSize: '0.8rem'}}>{errors.fechaContratacion}</p>}
+          {errors.fechaContratacion && (
+            <p className={styles.error}>{errors.fechaContratacion}</p>
+          )}
         </div>
-        <button type="submit" className={styles.button}>
+        <button className={styles.button} type="submit">
           Registrar Docente
         </button>
       </form>
@@ -176,3 +165,6 @@ const Docentes = () => {
 };
 
 export default Docentes;
+
+
+

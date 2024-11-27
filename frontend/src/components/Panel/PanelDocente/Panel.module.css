@@ -1,171 +1,125 @@
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #f5f6fa;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background: linear-gradient(to right, #2193b0, #6dd5ed);
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .logo {
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .logo:hover {
-    transform: scale(1.1);
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: 1px;
-  }
-  
-  .userLogo {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .userLogo:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .main {
-    display: flex;
-    flex: 1;
-    height: calc(100vh - 4rem); /* Ajusta según la altura del header */
-  }
-  
-  .sidebar {
-    width: 250px;
-    background-color: white;
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-  }
-  
-  .button {
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    background-color: transparent;
-    color: #505050;
-    font-weight: 500;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .button:hover {
-    background-color: rgba(33, 147, 176, 0.1);
-    color: #2193b0;
-    transform: translateX(5px);
-  }
-  
-  .button.active {
-    background: linear-gradient(to right, #2193b0, #6dd5ed);
-    color: white;
-    box-shadow: 0 4px 15px rgba(33, 147, 176, 0.3);
-  }
-  
-  .content {
-    flex: 1;
-    padding: 2rem;
-    overflow-y: auto;
-  }
-  
-  /* Estilos para hacer el panel responsive */
-  @media (max-width: 768px) {
-    .header {
-      padding: 1rem;
-    }
-  
-    .title {
-      font-size: 1.2rem;
-    }
-  
-    .sidebar {
-      width: 200px;
-      padding: 1rem 0.5rem;
-    }
-  
-    .button {
-      padding: 0.8rem 1rem;
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .main {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      padding: 1rem;
-    }
-  
-    .content {
-      padding: 1rem;
-    }
-  
-    .button {
-      padding: 0.8rem;
-    }
-  }
-  
-  /* Animaciones suaves para transiciones de contenido */
-  .content > * {
-    animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Estilo para la barra de desplazamiento personalizada */
-  .content::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  .content::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-  }
-  
-  .content::-webkit-scrollbar-thumb {
-    background: #2193b0;
-    border-radius: 4px;
-  }
-  
-  .content::-webkit-scrollbar-thumb:hover {
-    background: #6dd5ed;
-  }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f6fa;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.userLogo {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.userLogo:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 4rem); /* Ajusta según la altura del header */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.button {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #505050;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button:hover {
+  background-color: rgba(33, 147, 176, 0.1);
+  color: #2193b0;
+  transform: translateX(5px);
+}
+
+.button.active {
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  color: white;
+  box-shadow: 0 4px 15px rgba(33, 147, 176, 0.3);
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.closeModal {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

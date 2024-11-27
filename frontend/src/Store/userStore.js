@@ -5,11 +5,12 @@ const useUserStore = create(
   persist(
     (set) => ({
       user: null, // Almacenar la información del usuario
-      loginUser: async (dni, password, role) => {
+      // Función para iniciar sesión
+      loginUser: async (dni, contraseña, rol) => {
         const response = await fetch('http://localhost:3001/user/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dni, password, role }),
+          body: JSON.stringify({ dni, contraseña, rol }),
         });
 
         const data = await response.json();
@@ -20,7 +21,26 @@ const useUserStore = create(
         set({ user: data }); // Guardar la información del usuario
         return data;
       },
-      logoutUser: () => set({ user: null }), // Función para cerrar sesión
+      // Función para registrar un nuevo usuario
+      registerUser: async (nombre, apellido, dni, contraseña, rol) => {
+        const response = await fetch('http://localhost:3001/user', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre, apellido, dni, contraseña, rol }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || 'Error al registrar el usuario');
+        }
+
+        set({ user: data }); // Guardar la información del usuario registrado
+        return data;
+      },
+      // Función para cerrar sesión
+      logoutUser: () => set({ user: null }),
+      // Limpiar datos del usuario
+      clearUser: () => set({ user: null }),
     }),
     {
       name: 'user-storage', // Nombre del almacenamiento (clave en localStorage o sessionStorage)

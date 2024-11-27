@@ -1,12 +1,12 @@
 /* Contenedor que cubre toda la pantalla */
-.pantallaCompleta-container {
+.pantallaCompletaContainer {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #0268d6, #8dc3c71f); /* Fondo con gradiente */
+  background: linear-gradient(to bottom, #033264, #646464c5); /* Fondo con gradiente */
   color: white;
   position: relative;
   padding: 20px;
@@ -14,9 +14,9 @@
   font-family: 'Poppins', Arial, sans-serif; /* Fuente más moderna */
   box-sizing: border-box;
 }
-
+ 
 /* Botón en la parte superior derecha */
-.pantallaCompleta-container .login-button {
+.pantallaCompletaContainer .loginButton {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -31,14 +31,14 @@
   transition: all 0.3s ease;
 }
 
-.pantallaCompleta-container .login-button:hover {
+.pantallaCompletaContainer .loginButton:hover {
   transform: scale(1.05); /* Aumenta ligeramente el tamaño de la sección */
   background-color: #0056b3;
 }
 
 /* Logotipos */
-.pantallaCompleta-container .logoSuizaIz,
-.pantallaCompleta-container .logoSuizaDer {
+.pantallaCompletaContainer .logoSuizaIz,
+.pantallaCompletaContainer .logoSuizaDer {
   width: 160px;
   height: 160px;
   position: absolute;
@@ -46,21 +46,21 @@
   transform: translateY(-50%);
 }
 
-.pantallaCompleta-container .logoSuizaIz {
+.pantallaCompletaContainer .logoSuizaIz {
   left: 5%; /* Alineación hacia la izquierda */
 }
 
-.pantallaCompleta-container .logoSuizaDer {
+.pantallaCompletaContainer .logoSuizaDer {
   right: 5%; /* Alineación hacia la derecha */
 }
 
 /* Encabezado principal */
-.pantallaCompleta-container .header {
+.pantallaCompletaContainer .header {
   margin-top: 50px;
   text-align: center;
 }
 
-.pantallaCompleta-container .title {
+.pantallaCompletaContainer .title {
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -68,22 +68,22 @@
   color: white;
 }
 
-.pantallaCompleta-container .subtitle {
+.pantallaCompletaContainer .subtitle {
   font-size: 20px;
   margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.8);
 }
 
 /* Secciones de contenido */
-.pantallaCompleta-container .content {
+.pantallaCompletaContainer .content {
   width: 100%;
   max-width: 900px; /* Aumentar el máximo para una mejor disposición */
   padding: 20px;
   box-sizing: border-box;
 }
 
-.pantallaCompleta-container .info-section,
-.features-section {
+.pantallaCompletaContainer .infoSection,
+.featuresSection {
   margin: 20px 0;
   background: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
   padding: 25px;
@@ -93,78 +93,90 @@
 }
 
 /* Efecto hover */
-.pantallaCompleta-container .info-section:hover,
-.pantallaCompleta-container .features-section:hover {
+.pantallaCompletaContainer .infoSection:hover,
+.pantallaCompletaContainer .featuresSection:hover {
   transform: scale(1.02); /* Aumenta ligeramente el tamaño de la sección */
   background: rgba(255, 255, 255, 0.2); /* Cambia el fondo a un tono más opaco */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Aumenta el tamaño de la sombra */
 }
 
-.pantallaCompleta-container .info-section h2,
-.features-section h2 {
+.pantallaCompletaContainer .infoSection h2,
+.featuresSection h2 {
   font-size: 28px;
   margin-bottom: 15px;
   color: #ffffff;
 }
 
-.pantallaCompleta-container .info-section p,
-.features-section ul {
+.pantallaCompletaContainer .infoSection p,
+.featuresSection ul {
   font-size: 18px;
   line-height: 1.6;
   color: #ddd;
 }
 
-.pantallaCompleta-container .features-section ul {
+.pantallaCompletaContainer .featuresSection ul {
   list-style: none;
   padding: 0;
 }
 
-.pantallaCompleta-container .features-section li {
+.pantallaCompletaContainer .featuresSection li {
   margin: 10px 0;
   padding-left: 20px;
   position: relative;
+  cursor: default;
+  border: none;
 }
 
-.pantallaCompleta-container .features-section li:before {
+.pantallaCompletaContainer .featuresSection li:hover{
+  background: rgba(255, 255, 255, 0.329);
+  color: black;
+}
+
+.pantallaCompletaContainer .featuresSection li:before {
   content: "✔";
   position: absolute;
-  left: 0;
+  left: 150px;
   color: #007bff;
+}
+
+.pantallaCompletaContainer .description{
+  font-size: 18px;
+  color: #1b1b2f;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .pantallaCompleta-container .logoSuizaIz,
-  .pantallaCompleta-container .logoSuizaDer {
+  .pantallaCompletaContainer .logoSuizaIz,
+  .pantallaCompletaContainer .logoSuizaDer {
     width: 120px;
     height: 120px;
     top: 10%; /* Ajusta la posición en pantallas más pequeñas */
     transform: translateY(0); /* Elimina el ajuste vertical */
   }
 
-  .pantallaCompleta-container .logoSuizaIz {
+  .pantallaCompletaContainer .logoSuizaIz {
     left: 10%;
   }
 
-  .pantallaCompleta-container .logoSuizaDer {
+  .pantallaCompletaContainer .logoSuizaDer {
     right: 10%;
   }
 
-  .pantallaCompleta-container .title {
+  .pantallaCompletaContainer .title {
     font-size: 36px;
   }
 
-  .pantallaCompleta-container .subtitle {
+  .pantallaCompletaContainer .subtitle {
     font-size: 18px;
   }
 
-  .pantallaCompleta-container .login-button {
+  .pantallaCompletaContainer .loginButton {
     font-size: 16px;
     padding: 10px 20px;
   }
 
-  .pantallaCompleta-container .info-section,
-  .features-section {
+  .pantallaCompletaContainer .infoSection,
+  .featuresSection {
     padding: 15px;
   }
 }
@@ -172,7 +184,7 @@
 
 
 /* Modal */
-.modal-overlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -212,7 +224,7 @@
   }
 }
 
-.modal-left {
+.modalLeft {
   background: #4989BF;
   padding: 30px;
   flex: 1;
@@ -222,13 +234,13 @@
   justify-content: center;
 }
 
-.modal-left h2 {
+.modalLeft h2 {
   font-size: 34px;
   margin-bottom: 10px;
   cursor: default;
 }
 
-.modal-left p {
+.modalLeft p {
   font-size: 14px;
   margin-bottom: 10px;
 }
@@ -237,24 +249,24 @@
   font-size: 90px;
 } */
 
-.modal-left .logoSuiza{
+.modalLeft .logoSuiza{
   width: 230px;
   height: 230px;
 }
 
-.modal-right {
+.modalRight {
   padding: 50px;
   flex: 2;
   margin-top: 30px; /* Ajusta según lo necesario */
 }
 
-.modal-right h2 {
+.modalRight h2 {
   font-size: 40px;
   margin-bottom: 20px;
   cursor:  default;
 }
 
-.modal-right p{
+.modalRight p{
   font-size: 16px;
   margin-top: -20px;
   margin-bottom: 60px;
@@ -262,15 +274,22 @@
   cursor: default;
 }
 
-.modal-right label {
+.modalRight label {
+  color: white;
   display: block;
   font-size: 18px;
   margin-bottom: 10px;
-  margin-top: 10px; /* Baja el grupo completo (label + input) */
+  margin-top: -10px; /* Baja el grupo completo (label + input) */
 }
 
-.modal-right input,
-.modal-right select {
+.modalRight form{
+  background: #1b1b2f;
+  padding: 30px;
+  width: 400px;
+}
+
+.modalRight input,
+.modalRight select {
   width: 90%;
   padding: 10px;
   margin-bottom: 20px; /* Espacio entre cada grupo */
@@ -280,8 +299,7 @@
   font-size: 17px;
 }
 
-
-.submit-button {
+.submitButton {
   width: 60%;
   padding: 10px;
   background-color: #4989BF;
@@ -293,11 +311,11 @@
   transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
+.submitButton:hover {
   background-color: #e43a50;
 }
 
-.close-button {
+.closeButton {
   margin-top: 10px;
   background-color: transparent;
   color: #4989BF;
@@ -305,8 +323,11 @@
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
-.close-button:hover {
+.closeButton:hover {
+  font-weight: bold;
   color: white;
+  background-color: red;
 }

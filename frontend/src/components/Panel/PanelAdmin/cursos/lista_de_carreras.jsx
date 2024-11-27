@@ -1,35 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './cursos.module.css';
 
-const CarrerasList = ({ carreras, onCarreraClick }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCiclo, setSelectedCiclo] = useState('');
+const CarrerasList = () => {
+  const [carreras, setCarreras] = useState([]); // Estado para las carreras
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
+  const [loading, setLoading] = useState(true); // Estado de carga
+  const [error, setError] = useState(null); // Estado de error
 
-  const ciclos = [
-    { id: 1, nombre: "Primer Ciclo" },
-    { id: 2, nombre: "Segundo Ciclo" },
-    { id: 3, nombre: "Tercer Ciclo" },
-    { id: 4, nombre: "Cuarto Ciclo" },
-    { id: 5, nombre: "Quinto Ciclo" },
-    { id: 6, nombre: "Sexto Ciclo" },
-  ];
+  // Función para obtener las carreras desde el backend
+  useEffect(() => {
+    const fetchCarreras = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/carreras');
+        setCarreras(response.data); // Actualiza el estado con los datos recibidos
+      } catch (err) {
+        setError('Error al cargar las carreras. Inténtalo nuevamente.');
+        console.error('Error al obtener las carreras:', err);
+      } finally {
+        setLoading(false); // Desactiva el estado de carga
+      }
+    };
 
-  const filteredCarreras = carreras.filter(carrera =>
-    carrera.toLowerCase().includes(searchTerm.toLowerCase())
+    fetchCarreras();
+  }, []);
+
+  // Filtrar carreras por el término de búsqueda
+  const filteredCarreras = carreras.filter((carrera) =>
+    carrera.nombre.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleCarreraClick = (carrera) => {
-    if (selectedCiclo) {
-      onCarreraClick(carrera, parseInt(selectedCiclo));
-    } else {
-      alert('Por favor seleccione un ciclo primero');
-    }
-  };
+  if (loading) {
+    return <div className={styles.loading}>Cargando carreras...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
 
   return (
     <div className={styles.section}>
       <h2>Lista de Carreras</h2>
-      
+
       <div className={styles.filterContainer}>
         <div className={styles.searchContainer}>
           <input
@@ -40,21 +52,6 @@ const CarrerasList = ({ carreras, onCarreraClick }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        
-        <div className={styles.selectContainer}>
-          <select
-            className={styles.cycleSelect}
-            value={selectedCiclo}
-            onChange={(e) => setSelectedCiclo(e.target.value)}
-          >
-            <option value="">Seleccionar Ciclo</option>
-            {ciclos.map((ciclo) => (
-              <option key={ciclo.id} value={ciclo.id}>
-                {ciclo.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
       </div>
 
       <table className={styles.table}>
@@ -62,21 +59,25 @@ const CarrerasList = ({ carreras, onCarreraClick }) => {
           <tr>
             <th>#</th>
             <th>Nombre de la Carrera</th>
-            <th>Ciclo</th>
+            <th>Jefe de Área</th>
           </tr>
         </thead>
         <tbody>
-          {filteredCarreras.map((carrera, index) => (
-            <tr 
-              key={index}
-              onClick={() => handleCarreraClick(carrera)}
-              className={styles.tableRow}
-            >
-              <td>{index + 1}</td>
-              <td>{carrera}</td>
-              <td>{selectedCiclo ? `${ciclos[parseInt(selectedCiclo) - 1]?.nombre}` : '-'}</td>
+          {filteredCarreras.length === 0 ? (
+            <tr>
+              <td colSpan="3" className={styles.noResults}>
+                No se encontraron carreras
+              </td>
             </tr>
-          ))}
+          ) : (
+            filteredCarreras.map((carrera, index) => (
+              <tr key={carrera.id} className={styles.tableRow}>
+                <td>{index + 1}</td>
+                <td>{carrera.nombre}</td>
+                <td>{carrera.jefe_area}</td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>

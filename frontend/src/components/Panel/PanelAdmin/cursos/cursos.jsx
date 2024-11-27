@@ -6,69 +6,69 @@ import CursosPorCarrera from './CursosPorCarrera';
 
 const Cursos = () => {
   const [carreras, setCarreras] = useState([
-    "Administración de Empresas",
-    "Administración de Operaciones Turísticas",
-    "Asistencia Administrativa",
-    "Contabilidad",
-    "Construcción Civil",
-    "Desarrollo de Sistemas de Información",
-    "Electricidad Industrial",
-    "Enfermería Técnica",
-    "Manejo Forestal",
-    "Mecánica Automotriz",
-    "Producción Agropecuaria"
+    { nombre: 'Administración de Empresas', jefeArea: 'Luis García' },
+    { nombre: 'Administración de Operaciones Turísticas', jefeArea: 'Ana Pérez' },
+    { nombre: 'Asistencia Administrativa', jefeArea: 'Claudia Ramírez' },
+    { nombre: 'Contabilidad', jefeArea: 'Carlos Torres' },
+    { nombre: 'Construcción Civil', jefeArea: 'Miguel Sánchez' },
+    { nombre: 'Desarrollo de Sistemas de Información', jefeArea: 'Gil torres arevalo' },
+    { nombre: 'Electricidad Industrial', jefeArea: 'Fernando López' },
+    { nombre: 'Enfermería Técnica', jefeArea: 'Patricia Jiménez' },
+    { nombre: 'Manejo Forestal', jefeArea: 'Sofía Vargas' },
+    { nombre: 'Mecánica Automotriz', jefeArea: 'Jorge Herrera' },
+    { nombre: 'Producción Agropecuaria', jefeArea: 'Lucía Gómez' },
   ]);
+
   const [showForm, setShowForm] = useState(false);
   const [selectedCarrera, setSelectedCarrera] = useState(null);
-  const [selectedCiclo, setSelectedCiclo] = useState(null);
 
   const handleAddCarrera = (newCarrera) => {
     setCarreras([...carreras, newCarrera]);
     setShowForm(false);
   };
 
-  const handleCarreraClick = (carrera, ciclo) => {
+  const handleCarreraClick = (carrera) => {
     setSelectedCarrera(carrera);
-    setSelectedCiclo(ciclo);
   };
 
   const handleBack = () => {
     setSelectedCarrera(null);
-    setSelectedCiclo(null);
   };
 
-  if (selectedCarrera && selectedCiclo) {
-    return (
-      <CursosPorCarrera 
-        carrera={selectedCarrera}
-        ciclo={selectedCiclo}
-        onBack={handleBack}
-      />
-    );
-  }
-
   return (
-    <div>
-      {showForm ? (
-        <CarreraForm 
-          onAddCarrera={handleAddCarrera}
-          onCancel={() => setShowForm(false)}
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1>Gestión de Carreras</h1>
+      </header>
+      {selectedCarrera ? (
+        <CursosPorCarrera 
+          carrera={selectedCarrera}
+          onBack={handleBack}
         />
       ) : (
-        <div>
-          <div className={styles.addButtonContainer}>
-            <button 
-              className={styles.addButton}
-              onClick={() => setShowForm(true)}
-            >
-              Agregar Nueva Carrera
-            </button>
-          </div>
-          <CarrerasList 
-            carreras={carreras}
-            onCarreraClick={handleCarreraClick}
-          />
-        </div>
+        <>
+          {showForm ? (
+            <div className={styles.modal}>
+              <CarreraForm 
+                onAddCarrera={handleAddCarrera}
+                onCancel={() => setShowForm(false)}
+              />
+            </div>
+          ) : (
+            <div className={styles.mainContent}>
+              <button 
+                className={styles.addButton}
+                onClick={() => setShowForm(true)}
+              >
+                + Agregar Nueva Carrera
+              </button>
+              <CarrerasList 
+                carreras={carreras}
+                onCarreraClick={handleCarreraClick}
+              />
+            </div>
+          )}
+        </>
       )}
     </div>
   );

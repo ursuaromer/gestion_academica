@@ -1,48 +1,44 @@
-// import React from 'react'
-// import useUserStore from '../../../Store/userStore';
-// const Alumnos = () => {
-//   const user = useUserStore((state)=> state.user);  // Accede al estado global
-
-//   return (
-//     <div>
-//     {user && (
-//       <div>
-//         <h1>Panel {user.role}</h1>
-//         <h2>Bienvenido, {user.username} ({user.dni}) {user.role}</h2>  {/* Muestra el nombre y DNI del usuario */}
-//       </div>
-//     )}
-//   </div>
-//   )
-// }
-
-// export default Alumnos
-import React, { useState, useEffect } from "react"; // Asegúrate de importar useEffect
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Panel.module.css";
 import useUserStore from "../../../Store/userStore";
+import AgregarNotas from "../PanelDocente/agregarNotas/agregarNotas";
 
 const Docentes = () => {
   const [activeSection, setActiveSection] = useState("matricular");
-  const user = useUserStore((state) => state.user); // Accedemos al estado global
-  const logoutUser = useUserStore((state) => state.logoutUser); // Función para cerrar sesión
-  const navigate = useNavigate(); // Hook para redirigir
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const user = useUserStore((state) => state.user);
+  const logoutUser = useUserStore((state) => state.logoutUser);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    logoutUser(); // Llama a la función de logout
-    navigate("/"); // Redirige al inicio ("/")
+    logoutUser();
+    navigate("/");
   };
 
-  // useEffect agregado para redirigir al inicio si no hay un usuario
+  const openLogoutModal = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const closeLogoutModal = () => {
+    setIsLogoutModalOpen(false);
+  };
+
+  const confirmLogout = () => {
+    handleLogout();
+    setIsLogoutModalOpen(false);
+  };
+
   useEffect(() => {
     if (!user) {
-      navigate("/"); // Si no hay usuario logueado, redirige al inicio
+      navigate("/");
     }
   }, [user, navigate]);
 
   const renderSection = () => {
     switch (activeSection) {
       case "agregarNotas":
-        return <div>Agregar Notas</div>;
+        return <AgregarNotas />;
       case "editarNotas":
         return <div>Editar Notas</div>;
       case "verNotas":
@@ -62,13 +58,11 @@ const Docentes = () => {
                 🏠
               </span>
             </div>
-            <h1 className={styles.title}>
-              PANEL DOCENTE - USUARIO: {user.dni}
-            </h1>
+            <h1 className={styles.title}>PANEL DOCENTE - USUARIO: {user.dni}</h1>
             <div className={styles.userLogo}>
               <img
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-                src="src/components/IMG/logo_suiza.png" // Asegúrate de que la ruta de la imagen es correcta
+                src="src/components/IMG/logo_suiza.png"
                 alt="Logo del usuario"
               />
             </div>
@@ -76,39 +70,31 @@ const Docentes = () => {
           <div className={styles.main}>
             <aside className={styles.sidebar}>
               <button
-                className={`${styles.button} ${
-                  activeSection === "agregarNotas" ? styles.active : ""
-                }`}
+                className={`${styles.button} ${activeSection === "agregarNotas" ? styles.active : ""}`}
                 onClick={() => setActiveSection("agregarNotas")}
               >
                 AGREGAR NOTAS
               </button>
-              <button
-                className={`${styles.button} ${
-                  activeSection === "editarNotas" ? styles.active : ""
-                }`}
-                onClick={() => setActiveSection("editarNotas")}
-              >
-                EDITAR NOTAS
-              </button>
-              <button
-                className={`${styles.button} ${
-                  activeSection === "verNotas" ? styles.active : ""
-                }`}
-                onClick={() => setActiveSection("verNotas")}
-              >
-                VER NOTAS
-              </button>
-              <button
-                className={`${styles.button} ${
-                  activeSection === "cerrarSesion" ? styles.active : ""
-                }`}
-                onClick={handleLogout}
-              >
-                CERRAR SESION
+
+              <button className={styles.button} onClick={openLogoutModal}>
+                CERRAR SESIÓN
               </button>
             </aside>
             <section className={styles.content}>{renderSection()}</section>
+          </div>
+        </div>
+      )}
+
+      {isLogoutModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
+            <h3>¿Estás seguro de que deseas cerrar sesión?</h3>
+            <button className={styles.modalButton} onClick={confirmLogout}>
+              Sí
+            </button>
+            <button className={styles.modalButton} onClick={closeLogoutModal}>
+              No
+            </button>
           </div>
         </div>
       )}
