@@ -1,0 +1,194 @@
+/* matriculaList.module.css */
+
+body {
+  background-color: #f4f9f4; /* Color de fondo suave */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor general */
+.container {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 90%;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor de filtros */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Etiquetas de filtros */
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* Estilo de los combos (select) */
+.filters select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Cambio de estilo al enfocar */
+.filters select:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Hover en los combos */
+.filters select:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Efectos en dispositivos móviles */
+@media (max-width: 768px) {
+  .filters {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  }
+
+  .filters select {
+      width: 90%; /* Ajustar el ancho para pantallas pequeñas */
+  }
+}
+
+
+
+select {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5em;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+select:hover {
+  background-color: #add8e6; /* Azul claro */
+  color: #000; /* Asegura que el texto sea legible */
+}
+
+
+
+
+
+
+
+  
+  /* Título */
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo de la tabla */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fdfdfd; /* Fondo base de la tabla */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Encabezados de tabla */
+  .table th {
+    padding: 12px;
+    background-color: #4caf50; /* Color del encabezado */
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    border-bottom: 2px solid #45a049;
+    text-align: center;
+  }
+  
+  /* Celdas de tabla */
+  .table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* Filas alternadas */
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fondo para filas pares */
+  }
+  
+  .table tr:nth-child(odd) {
+    background-color: #eafaf1; /* Fondo para filas impares */
+  }
+  
+  /* Cambio de color al pasar el mouse */
+  .table tr:hover {
+    background-color: #c8e6c9; /* Color al pasar el mouse */
+    cursor: pointer;
+  }
+  
+  /* Estilo de los botones */
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Botón de eliminar */
+  .deleteButton {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  .deleteButton:hover {
+    background-color: #ff1a1a;
+  }
+  
+  /* Botón de editar */
+  .editButton {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .editButton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Efectos en dispositivos móviles */
+  @media (max-width: 768px) {
+    .table {
+      font-size: 12px;
+    }
+  
+    button {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+  }
+  

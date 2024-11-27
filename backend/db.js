@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 
-const sequelize = new Sequelize('postgres://postgres:dsi2024@localhost:5432/sistema_academico',{
+const sequelize = new Sequelize('postgres://postgres:romer180105@localhost:5432/sistema_academico',{
 
 // const sequelize = new Sequelize('postgres://postgres:romer180105@localhost:5432/gestion_academica',{
 

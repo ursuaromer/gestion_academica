@@ -12,14 +12,15 @@ const userRouter = Router();
 
 // Crear nuevo usuario
 userRouter.post("/", async (req, res) => {
-    const { dni, password, role } = req.body;
-    try {
-        if (!dni || !password || !role) {
-            return res.status(400).json({ error: "Faltan campos requeridos: dni, password o role" });
-        }
+    const { dni, nombre, apellido, contraseña, rol } = req.body;
 
-        const newUser = await createUserController({ dni, password, role });
-        res.status(201).json(newUser);
+    if (!dni || !nombre || !apellido || !contraseña || !rol) {
+        return res.status(400).json({ error: "Faltan campos requeridos: dni, nombre, apellido, contraseña o rol." });
+    }
+
+    try {
+        const newUser = await createUserController({ dni, nombre, apellido, contraseña, rol });
+        res.status(201).json({ message: "Usuario creado con éxito", user: newUser });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -27,26 +28,26 @@ userRouter.post("/", async (req, res) => {
 
 // Ruta de inicio de sesión
 userRouter.post("/login", async (req, res) => {
-    const { dni, password } = req.body;
+    const { dni, contraseña } = req.body;
 
-    if (!dni || !password) {
-        return res.status(400).json({ error: "Faltan campos: dni o password" });
+    if (!dni || !contraseña) {
+        return res.status(400).json({ error: "Faltan campos: dni o contraseña." });
     }
 
     try {
         const user = await getUserByDniController(dni);
         if (!user) {
-            return res.status(404).json({ error: "Usuario no encontrado" });
+            return res.status(404).json({ error: "Usuario no encontrado." });
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPasswordValid = await bcrypt.compare(contraseña, user.contraseña);
         if (!isPasswordValid) {
-            return res.status(401).json({ error: "Contraseña incorrecta" });
+            return res.status(401).json({ error: "Contraseña incorrecta." });
         }
 
         res.status(200).json({
             dni: user.dni,
-            role: user.role,
+            rol: user.rol,
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -70,7 +71,7 @@ userRouter.get("/:dni", async (req, res) => {
     try {
         const user = await getUserByDniController(dni);
         if (!user) {
-            return res.status(404).json({ error: "Usuario no encontrado" });
+            return res.status(404).json({ error: "Usuario no encontrado." });
         }
         res.status(200).json(user);
     } catch (error) {
@@ -86,7 +87,7 @@ userRouter.put("/:dni", async (req, res) => {
     try {
         const updatedUser = await updateUserByDniController(dni, userData);
         if (!updatedUser) {
-            return res.status(404).json({ error: "Usuario no encontrado" });
+            return res.status(404).json({ error: "Usuario no encontrado." });
         }
         res.status(200).json(updatedUser);
     } catch (error) {
@@ -101,9 +102,9 @@ userRouter.delete("/:dni", async (req, res) => {
     try {
         const deletedUser = await deleteUserByDniController(dni);
         if (!deletedUser) {
-            return res.status(404).json({ error: "Usuario no encontrado" });
+            return res.status(404).json({ error: "Usuario no encontrado." });
         }
-        res.status(200).json({ message: "Usuario eliminado con éxito" });
+        res.status(200).json({ message: "Usuario eliminado con éxito." });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

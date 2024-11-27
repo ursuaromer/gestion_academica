@@ -1,27 +1,29 @@
-const User = require('../models/User');
+const Usuario = require('../models/User');
 const bcrypt = require('bcrypt');
 
 // Crear un nuevo usuario
-const createUserController = async ({ dni, password, role }) => {
+const createUserController = async ({ dni, nombre, apellido, contraseña, rol }) => {
     try {
-        if (!dni || !password || !role) {
+        if (!dni || !nombre || !apellido || !contraseña || !rol) {
             throw new Error('Faltan datos requeridos para crear el usuario.');
         }
 
         // Verificar si el DNI ya existe
-        const existingUser = await User.findOne({ where: { dni } });
+        const existingUser = await Usuario.findOne({ where: { dni } });
         if (existingUser) {
             throw new Error('El usuario con este DNI ya existe.');
         }
 
         // Hashear la contraseña
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(contraseña, 10);
 
         // Crear el usuario
-        const newUser = await User.create({
+        const newUser = await Usuario.create({
             dni,
-            password: hashedPassword,
-            role,
+            nombre,
+            apellido,
+            contraseña: hashedPassword, 
+            rol,
         });
 
         return newUser;
@@ -37,7 +39,7 @@ const getUserByDniController = async (dni) => {
             throw new Error('El DNI es obligatorio para buscar un usuario.');
         }
 
-        const user = await User.findOne({ where: { dni } });
+        const user = await Usuario.findOne({ where: { dni } });
         if (!user) {
             return null; // Devuelve null si no se encuentra el usuario
         }
@@ -51,7 +53,7 @@ const getUserByDniController = async (dni) => {
 // Obtener todos los usuarios
 const getAllUserController = async () => {
     try {
-        const users = await User.findAll();
+        const users = await Usuario.findAll();
         return users;
     } catch (error) {
         throw new Error(`Error al obtener los usuarios: ${error.message}`);
@@ -65,14 +67,14 @@ const updateUserByDniController = async (dni, userData) => {
             throw new Error('El DNI es obligatorio para actualizar un usuario.');
         }
 
-        const user = await User.findOne({ where: { dni } });
+        const user = await Usuario.findOne({ where: { dni } });
         if (!user) {
             return null; // Devuelve null si no se encuentra el usuario
         }
 
         // Si se pasa una contraseña, la hashea
-        if (userData.password) {
-            userData.password = await bcrypt.hash(userData.password, 10);
+        if (userData.contraseña) {
+            userData.contraseña = await bcrypt.hash(userData.contraseña, 10);
         }
 
         await user.update(userData);
@@ -89,7 +91,7 @@ const deleteUserByDniController = async (dni) => {
             throw new Error('El DNI es obligatorio para eliminar un usuario.');
         }
 
-        const user = await User.findOne({ where: { dni } });
+        const user = await Usuario.findOne({ where: { dni } });
         if (!user) {
             return null; // Devuelve null si no se encuentra el usuario
         }

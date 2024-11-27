@@ -1,0 +1,226 @@
+/* Contenedor principal */
+.container {
+  font-family: 'Roboto', sans-serif;
+  padding: 30px;
+  background: linear-gradient(135deg, #ffffff, #f8f8f8);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 20px auto;
+  color: #2c2c2c;
+}
+
+/* Título */
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title:after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #d4af37;
+  margin: 10px auto 0;
+  border-radius: 5px;
+}
+
+/* Contenedor de filtros */
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Alinea verticalmente los elementos */
+  margin-bottom: 20px;
+  gap: 10px;  /* Espacio entre el campo de búsqueda y el botón */
+}
+
+.searchContainer {
+  width: 100%;
+  max-width: 300px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #d4af37;
+  border-radius: 50px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchInput:focus {
+  border-color: #b28928;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón Agregar Docente */
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #292f87;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #3a3fb8;
+  transform: translateY(-2px);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(210, 169, 55, 0.5);
+}
+
+/* Tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 14px 18px;
+  border: 1px solid #e0e0e0;
+  word-wrap: break-word;
+}
+
+.table th {
+  background-color: #fafafa;
+  color: #2c2c2c;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table td {
+  color: #555;
+  transition: background-color 0.3s ease;
+}
+
+.tableRow {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: #fdf7e5;
+  transform: scale(1.01);
+}
+
+/* Estilo para los botones de Editar y Eliminar */
+.button.modify,
+.button.delete {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 5px;
+}
+
+.button.modify {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button.modify:hover {
+  background-color: #45a049;
+}
+
+.button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.button.delete:hover {
+  background-color: #e53935;
+}
+
+.tableRow button {
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Mensaje de "No se encontraron resultados" */
+.noResults {
+  text-align: center;
+  font-size: 1rem;
+  color: #888;
+  padding: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .filterContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  /* Mejora el espaciado de la tabla en dispositivos pequeños */
+  .table th, .table td {
+    padding: 12px 10px;
+  }
+
+  /* Ajuste en el tamaño del input en pantallas pequeñas */
+  .searchInput {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+
